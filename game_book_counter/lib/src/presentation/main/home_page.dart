@@ -4,12 +4,15 @@ import 'package:game_book_counter/src/domain/consumable/entity/consumable.dart';
 import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/domain/inventory/entity/inventory.dart';
 import 'package:game_book_counter/src/domain/item/entity/item.dart';
+import 'package:game_book_counter/src/domain/job/entity/job.dart';
+import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 import 'package:game_book_counter/src/presentation/commons/bottom_nav_bar.dart';
 import 'package:game_book_counter/src/presentation/main/components/homa_card_spells_list.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_equipments_list.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_items_list.dart';
+import 'package:game_book_counter/src/presentation/main/components/home_card_player_status.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list.dart';
 
 class HomePage extends StatelessWidget {
@@ -36,6 +39,7 @@ class HomePage extends StatelessWidget {
       equipments: [Equipment(id: 'abcDEF2', name: 'Armadura de madeira', description: 'Armadura simples feita de madeira.', attributes: Attributes(defense: 3), buyPrice: 10, sellPrice: 5, position: EquipmentPosition.body, equipped: false), ... equipments],
       consumables: consumables,
     );
+    final PlayerCharacter player = PlayerCharacter(id: 'hdcblas', name: 'Yusuki', description: 'Um jogador', attributes: Attributes(attack: 12, defense: 5,), skills: skills, spells: spells, equipments: equipments, inventory: inventory, job: Job(id: 'sdobf', name: 'Samurai', description: 'Guerreiro antigo que luta com duas espadas',));
 
     return Scaffold(
       appBar: AppBar(
@@ -49,6 +53,8 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+
+              HomeCardPlayerStatus(player: player),
 
              HomeCardSkillsList(
                skills: skills,

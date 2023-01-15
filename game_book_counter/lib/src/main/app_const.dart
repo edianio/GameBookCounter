@@ -3,6 +3,10 @@ class PageConst {
 }
 
 class AppText {
+  static const character = 'Personagem';
+  static const level = 'Nível';
+  static const exp = 'Experiência';
+  static const job = 'Classe';
   static const head = 'Cabeça';
   static const body = 'Peito';
   static const hands = 'Mãos';
