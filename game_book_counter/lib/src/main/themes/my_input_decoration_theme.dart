@@ -2,7 +2,7 @@ part of 'app_style.dart';
 
 InputDecorationTheme myInputDecorationTheme() => InputDecorationTheme(
   hintStyle: const TextStyle(
-    color: ColorTable.fontDefault,
+    color: ColorTable.fontDefaultLight,
     fontSize: 14,
     fontWeight: FontWeight.w500,
     fontStyle: FontStyle.italic,
