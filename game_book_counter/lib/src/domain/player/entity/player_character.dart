@@ -1,9 +1,11 @@
 import 'package:game_book_counter/src/domain/attributes/entity/attributes.dart';
 import 'package:game_book_counter/src/domain/inventory/entity/inventory.dart';
 import 'package:game_book_counter/src/domain/job/entity/job.dart';
+import 'package:game_book_counter/src/domain/magic/entity/spell.dart';
+import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 
 class PlayerCharacter {
-  final int id;
+  final String id;
   final String name;
   String? alias;
   String? description;
@@ -11,7 +13,8 @@ class PlayerCharacter {
   int exp;
   final Job? job;
   final Attributes attributes;
-  final List<String> skills;
+  final List<Skill> skills;
+  final List<Spell> spells;
   final Inventory inventory;
 
   PlayerCharacter({
@@ -24,6 +27,7 @@ class PlayerCharacter {
     this.job,
     required this.attributes,
     required this.skills,
+    required this.spells,
     required this.inventory,
   });
 }

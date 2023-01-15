@@ -1,7 +1,7 @@
 import 'package:game_book_counter/src/domain/attributes/entity/attributes.dart';
 
 class Enemy {
-  final int id;
+  final String id;
   String? name;
   final Attributes attributes;
 

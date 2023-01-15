@@ -1,7 +1,7 @@
 import 'package:game_book_counter/src/domain/attributes/entity/attributes.dart';
 
 class Skill {
-  final int id;
+  final String id;
   String name;
   String? description;
   Attributes? attributes;

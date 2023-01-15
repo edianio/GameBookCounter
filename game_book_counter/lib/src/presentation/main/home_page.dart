@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
-import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/commons/bottom_nav_bar.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list.dart';
 
@@ -9,7 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Skill> skills = [Skill(id: 123, name: 'habilidade 1', description: 'Descricao da habilidade', effect: (){debugPrint('Efeito!!!');})];
+    final List<Skill> skills = [Skill(id: 'abcDEF', name: 'habilidade 1', description: 'Descricao da habilidade', effect: (){debugPrint('Efeito!!!');})];
 
     return Scaffold(
       appBar: AppBar(
