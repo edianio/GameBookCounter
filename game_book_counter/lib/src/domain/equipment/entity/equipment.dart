@@ -20,6 +20,7 @@ class Equipment extends Item{
   Attributes attributes;
   Function? effect;
   EquipmentPosition position;
+  bool equipped;
 
   Equipment({
     required super.id,
@@ -27,8 +28,10 @@ class Equipment extends Item{
     super.description,
     super.buyPrice,
     super.sellPrice,
+    super.quantity,
     required this.attributes,
     required this.position,
     this.effect,
+    required this.equipped,
   });
 }

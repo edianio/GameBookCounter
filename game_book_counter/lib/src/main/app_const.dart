@@ -12,6 +12,7 @@ class AppText {
   static const first = 'Primeiro';
   static const second = 'Segundo';
   static const use = 'Uso';
+  static const quantity = 'Quantidade';
   static const sellPrice = 'Valor de venda';
   static const buyPrice = 'Valor de compra';
   static const skill = 'Habilidade';
@@ -32,4 +33,9 @@ class AppText {
   static const addSpell = 'Adicionar feitiço';
   static const manaConsume = 'Consumo de mana';
   static const itemConsume = 'Item necessário';
+  static const inventory = 'Inventário';
+  static const coins = 'Moedas';
+  static const item = 'Item';
+  static const items = 'Itens';
+  static const addItem = 'Adicionar item';
 }

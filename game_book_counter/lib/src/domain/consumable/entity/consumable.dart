@@ -12,6 +12,7 @@ class Consumable extends Item{
     super.description,
     super.buyPrice,
     super.sellPrice,
+    super.quantity,
     this.attributes,
     required this.effect,
     this.timeEffectInSeconds,
