@@ -1,4 +1,5 @@
 import 'package:game_book_counter/src/domain/attributes/entity/attributes.dart';
+import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/domain/inventory/entity/inventory.dart';
 import 'package:game_book_counter/src/domain/job/entity/job.dart';
 import 'package:game_book_counter/src/domain/magic/entity/spell.dart';
@@ -15,6 +16,7 @@ class PlayerCharacter {
   final Attributes attributes;
   final List<Skill> skills;
   final List<Spell> spells;
+  final List<Equipment> equipments;
   final Inventory inventory;
 
   PlayerCharacter({
@@ -28,6 +30,7 @@ class PlayerCharacter {
     required this.attributes,
     required this.skills,
     required this.spells,
+    required this.equipments,
     required this.inventory,
   });
 }

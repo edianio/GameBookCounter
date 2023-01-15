@@ -9,7 +9,7 @@ class Item {
     required this.id,
     required this.name,
     this.description,
-    this.buyPrice = 1,
-    this.sellPrice = 1,
+    this.buyPrice = 0,
+    this.sellPrice = 0,
   });
 }

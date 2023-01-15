@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
+import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
-import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list_item.dart';
+import 'package:game_book_counter/src/presentation/main/components/home_card_equipments_list_item.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
-class HomeCardSkillsList extends StatelessWidget {
-  final List<Skill> skills;
-  final VoidCallback onTapAddSkill;
-  final VoidCallback onTapRemoveSkill;
+class HomeCardEquipmentsList extends StatelessWidget {
+  final List<Equipment> equipments;
+  final VoidCallback onTapAddEquipment;
+  final VoidCallback onTapRemoveEquipment;
 
-  const HomeCardSkillsList(
-      {required this.skills,
-      required this.onTapAddSkill,
-      required this.onTapRemoveSkill,
-      Key? key})
-      : super(key: key);
+  const HomeCardEquipmentsList({
+    required this.equipments,
+    required this.onTapAddEquipment,
+    required this.onTapRemoveEquipment,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class HomeCardSkillsList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 2),
               child: Text(
-                AppText.skills,
+                AppText.equipments,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: ColorTable.fontDefault),
                 textAlign: TextAlign.center,
               ),
@@ -38,12 +38,12 @@ class HomeCardSkillsList extends StatelessWidget {
           ListView.builder(
             primary: false,
             shrinkWrap: true,
-            itemCount: skills.length,
+            itemCount: equipments.length,
             itemBuilder: (context, index){
-              if (skills.isEmpty) {
+              if (equipments.isEmpty) {
                 return Container();
               }
-              return HomeCardSkillsListItem(skill: skills[index]);
+              return HomeCardEquipmentsListItem(equipment: equipments[index],);
             },
           ),
           FractionallySizedBox(
@@ -51,8 +51,8 @@ class HomeCardSkillsList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: ElevatedButton(
-                onPressed: () => onTapAddSkill(),
-                child: const Text(AppText.addSkill),
+                onPressed: () => onTapAddEquipment(),
+                child: const Text(AppText.addEquipment),
               ),
             ),
           ),
