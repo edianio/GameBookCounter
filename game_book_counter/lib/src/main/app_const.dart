@@ -27,4 +27,9 @@ class AppText {
   static const luck = 'Sorte';
   static const speed = 'Velocidade';
   static const intelligence = 'Inteligência';
+  static const spell = 'Feitiço';
+  static const spells = 'Feitiços';
+  static const addSpell = 'Adicionar feitiço';
+  static const manaConsume = 'Consumo de mana';
+  static const itemConsume = 'Item necessário';
 }

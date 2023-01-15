@@ -2,8 +2,8 @@ import 'package:game_book_counter/src/domain/attributes/entity/attributes.dart';
 import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/domain/inventory/entity/inventory.dart';
 import 'package:game_book_counter/src/domain/job/entity/job.dart';
-import 'package:game_book_counter/src/domain/magic/entity/spell.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
+import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 
 class PlayerCharacter {
   final String id;

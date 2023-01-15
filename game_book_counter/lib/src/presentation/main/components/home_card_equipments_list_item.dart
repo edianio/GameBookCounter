@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
+import 'package:game_book_counter/src/presentation/commons/simple_capsule_information.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class HomeCardEquipmentsListItem extends StatelessWidget {
@@ -10,24 +11,6 @@ class HomeCardEquipmentsListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fontStyle = Theme.of(context).textTheme.bodySmall!.copyWith(color: ColorTable.fontDefault);
-
-    Widget _capsule(String text) =>
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(32),
-            border: Border.all(
-              color: ColorTable.primary,
-              width: 1,
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-            child: Text(
-              text,
-              style: fontStyle,
-            ),
-          ),
-        );
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -77,13 +60,13 @@ class HomeCardEquipmentsListItem extends StatelessWidget {
             spacing: 4,
             runSpacing: 4,
             children: <Widget>[
-              _capsule('${AppText.life}: ${equipment.attributes.life}',),
-              _capsule('${AppText.mana}: ${equipment.attributes.mana}',),
-              _capsule('${AppText.attack}: ${equipment.attributes.attack}',),
-              _capsule('${AppText.defense}: ${equipment.attributes.defense}',),
-              _capsule('${AppText.luck}: ${equipment.attributes.luck}',),
-              _capsule('${AppText.speed}: ${equipment.attributes.speed}',),
-              _capsule('${AppText.intelligence}: ${equipment.attributes.intelligence}',),
+              SimpleCapsuleInformation('${AppText.life}: ${equipment.attributes.life}',),
+              SimpleCapsuleInformation('${AppText.mana}: ${equipment.attributes.mana}',),
+              SimpleCapsuleInformation('${AppText.attack}: ${equipment.attributes.attack}',),
+              SimpleCapsuleInformation('${AppText.defense}: ${equipment.attributes.defense}',),
+              SimpleCapsuleInformation('${AppText.luck}: ${equipment.attributes.luck}',),
+              SimpleCapsuleInformation('${AppText.speed}: ${equipment.attributes.speed}',),
+              SimpleCapsuleInformation('${AppText.intelligence}: ${equipment.attributes.intelligence}',),
             ],
           ),
         ),
