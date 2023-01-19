@@ -1,40 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/main/base_page.dart';
+import 'package:game_book_counter/src/presentation/player/pages/player_page.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class AppGeneratedRoute {
   static Route<dynamic> route(RouteSettings settings){
-
     switch(settings.name){
       case PageConst.root:
         return MaterialPageRoute(
           builder: (_) => const BasePage(),
           settings: settings,
         );
-    //
-    // case PageConst.adm:
-    //   return MaterialPageRoute(
-    //     builder: (_) => const AdmPage(),
-    //     settings: settings,
-    //   );
-    //
-    //   case PageConst.products:
-    //     return MaterialPageRoute(
-    //       builder: (_) => const ProductsPage(),
-    //       settings: settings,
-    //     );
-    //
-    // case PageConst.admEditProduct:
-    //   return MaterialPageRoute(
-    //     builder: (_) => EditProductAdmPage(product: settings.arguments as ProductEntity),
-    //     settings: settings,
-    //   );
-    //
+      case PageConst.player:
+        return MaterialPageRoute(
+          builder: (_) => PlayerPage(player: settings.arguments as PlayerCharacter),
+          settings: settings,
+        );
       default:
         return materialBuilder(widget: const ErrorPage());
     }
-
   }
 }
 

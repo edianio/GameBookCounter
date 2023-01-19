@@ -1,5 +1,6 @@
 class PageConst {
   static const root = '/';
+  static const player = '/player';
 }
 
 class AppText {
@@ -42,4 +43,6 @@ class AppText {
   static const item = 'Item';
   static const items = 'Itens';
   static const addItem = 'Adicionar item';
+  static const name = 'Nome';
+  static const alias = 'Apelido';
 }
