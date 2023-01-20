@@ -29,6 +29,7 @@ class Equipment extends Item{
     super.buyPrice,
     super.sellPrice,
     super.quantity,
+    super.enabled,
     required this.attributes,
     required this.position,
     this.effect,

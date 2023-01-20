@@ -29,6 +29,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   Future<void> _setLevel(PlayerSetLevelEvent event, Emitter emit) async {
     emit(PlayerLoadingState());
     final player = await setLevel(event.player, event.level);
+    await setExp(event.player, 0);
     emit(PlayerLoadedState(player: player));
   }
 

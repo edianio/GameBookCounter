@@ -1,6 +1,38 @@
 class PageConst {
   static const root = '/';
   static const player = '/player';
+  static const skills = '/skills';
+  static const addSkill = '/add_skill';
+}
+
+class DbConst {
+  static const hivePath = './';
+  static const players = 'players';
+  static const skills = 'skills';
+  static const spells = 'spells';
+  static const inventory = 'inventory';
+  static const items = 'items';
+  static const jobs = 'jobs';
+  static const attributes = 'attributes';
+  static const equipments = 'equipments';
+  static const consumables = 'consumables';
+  static const enemies = 'enemies';
+}
+
+class EntitiesConst {
+  static const id = 'id';
+  static const name = 'name';
+  static const description = 'description';
+  static const attributes = 'attributes';
+  static const effect = 'effect';
+  static const life = 'life';
+  static const mana = 'mana';
+  static const attack = 'attack';
+  static const defense = 'defense';
+  static const luck = 'luck';
+  static const speed = 'speed';
+  static const intelligence = 'intelligence';
+  static const enabled = 'enabled';
 }
 
 class AppText {
@@ -45,4 +77,6 @@ class AppText {
   static const addItem = 'Adicionar item';
   static const name = 'Nome';
   static const alias = 'Apelido';
+  static const description = 'Descrição';
+  static const save = 'Salvar';
 }

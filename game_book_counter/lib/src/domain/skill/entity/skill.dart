@@ -5,7 +5,15 @@ class Skill {
   String name;
   String? description;
   Attributes? attributes;
-  Function effect;
+  Function? effect;
+  bool enabled;
 
-  Skill({required this.id, required this.name, this.description, this.attributes, required this.effect});
+  Skill({
+    required this.id,
+    required this.name,
+    this.description,
+    this.attributes,
+    this.effect,
+    this.enabled = true,
+  });
 }

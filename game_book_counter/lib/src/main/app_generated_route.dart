@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
+import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/main/base_page.dart';
 import 'package:game_book_counter/src/presentation/player/pages/player_page.dart';
+import 'package:game_book_counter/src/presentation/skills/plages/add_skill_page.dart';
+import 'package:game_book_counter/src/presentation/skills/plages/skills_page.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class AppGeneratedRoute {
@@ -16,6 +19,16 @@ class AppGeneratedRoute {
       case PageConst.player:
         return MaterialPageRoute(
           builder: (_) => PlayerPage(player: settings.arguments as PlayerCharacter),
+          settings: settings,
+        );
+      case PageConst.skills:
+        return MaterialPageRoute(
+          builder: (_) => const SkillsPage(),
+          settings: settings,
+        );
+      case PageConst.addSkill:
+        return MaterialPageRoute(
+          builder: (_) => const AddSkillPage(),
           settings: settings,
         );
       default:

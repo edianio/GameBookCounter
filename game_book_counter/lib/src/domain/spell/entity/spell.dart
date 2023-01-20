@@ -7,6 +7,7 @@ class Spell {
   int manaConsume;
   Item? itemConsume;
   Function effect;
+  bool enabled;
 
   Spell({
     required this.id,
@@ -15,5 +16,6 @@ class Spell {
     this.manaConsume = 0,
     this.itemConsume,
     required this.effect,
+    this.enabled = true,
   });
 }

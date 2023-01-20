@@ -7,6 +7,7 @@ import 'package:game_book_counter/src/domain/inventory/entity/inventory.dart';
 import 'package:game_book_counter/src/domain/item/entity/item.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
+import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/modules/service_locator_setup.dart';
 import 'package:game_book_counter/src/presentation/commons/bottom_nav_bar.dart';
 import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
@@ -17,6 +18,8 @@ import 'package:game_book_counter/src/presentation/main/components/home_card_pla
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list.dart';
 import 'package:game_book_counter/src/presentation/player/bloc/player_bloc.dart';
 import 'package:game_book_counter/src/presentation/player/bloc/player_state.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skill_event.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -90,10 +93,13 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
 
-             HomeCardSkillsList(
-               skills: skills,
-               onTapAddSkill: (){},
-               onTapRemoveSkill: (){},
+             GestureDetector(
+               onTap: () => Navigator.of(context).pushNamed(PageConst.skills),
+               child: HomeCardSkillsList(
+                 skills: skills,
+                 onTapAddSkill: () => Navigator.of(context).pushNamed(PageConst.addSkill),
+                 onTapRemoveSkill: (){},
+               ),
              ),
 
               HomeCardEquipmentsList(
