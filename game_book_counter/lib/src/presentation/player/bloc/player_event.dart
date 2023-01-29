@@ -15,3 +15,17 @@ class PlayerSetExpEvent extends PlayerEvent {
 
   PlayerSetExpEvent({required this.player, required this.exp});
 }
+
+class GetPlayerEvent extends PlayerEvent {}
+
+class AddPlayerEvent extends PlayerEvent {
+  final PlayerCharacter player;
+
+  AddPlayerEvent(this.player);
+}
+
+class UpdatePlayerEvent extends PlayerEvent {
+  final PlayerCharacter player;
+
+  UpdatePlayerEvent(this.player);
+}

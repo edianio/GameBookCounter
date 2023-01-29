@@ -3,7 +3,7 @@ import 'package:game_book_counter/src/domain/item/entity/item.dart';
 
 class Consumable extends Item{
   Attributes? attributes;
-  Function effect;
+  Function? effect;
   int? timeEffectInSeconds;
 
   Consumable({
@@ -15,7 +15,7 @@ class Consumable extends Item{
     super.quantity,
     super.enabled,
     this.attributes,
-    required this.effect,
+    this.effect,
     this.timeEffectInSeconds,
   });
 }

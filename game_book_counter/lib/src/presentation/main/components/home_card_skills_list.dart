@@ -34,7 +34,7 @@ class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
   void initState() {
     super.initState();
     bloc = getIt<SkillsBloc>();
-    bloc.add(SkillGetAllEvent());
+    bloc.add(GetAllSkillsEvent());
   }
 
   @override

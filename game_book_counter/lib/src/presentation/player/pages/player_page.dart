@@ -45,7 +45,7 @@ class _PlayerPageState extends State<PlayerPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     if(bloc.state is PlayerLoadedState) {
-      level.text = (bloc.state as PlayerLoadedState).player.level.toString();
+      level.text = (bloc.state as PlayerLoadedState).player!.level.toString();
     }
   }
 
@@ -65,8 +65,8 @@ class _PlayerPageState extends State<PlayerPage> {
               bloc: bloc,
               listener: (context, state) {
                 if(state is PlayerLoadedState) {
-                  level.text = (bloc.state as PlayerLoadedState).player.level.toString();
-                  exp.text = (bloc.state as PlayerLoadedState).player.exp.toString();
+                  level.text = (bloc.state as PlayerLoadedState).player!.level.toString();
+                  exp.text = (bloc.state as PlayerLoadedState).player!.exp.toString();
                 }
               },
               builder: (context, state) {
@@ -110,7 +110,7 @@ class _PlayerPageState extends State<PlayerPage> {
                         child: Row(
                           children: <Widget>[
                             ElevatedButton(
-                              onPressed: () => bloc.add(PlayerSetLevelEvent(player: state.player, level: state.player.level - 1)),
+                              onPressed: () => bloc.add(PlayerSetLevelEvent(player: state.player!, level: state.player!.level - 1)),
                               child: const Icon(Icons.remove),
                             ),
                             Flexible(
@@ -129,7 +129,7 @@ class _PlayerPageState extends State<PlayerPage> {
                               ),
                             ),
                             ElevatedButton(
-                              onPressed: () => bloc.add(PlayerSetLevelEvent(player: state.player, level: state.player.level+1)),
+                              onPressed: () => bloc.add(PlayerSetLevelEvent(player: state.player!, level: state.player!.level+1)),
                               child: const Icon(Icons.add),
                             ),
                           ],
@@ -141,7 +141,7 @@ class _PlayerPageState extends State<PlayerPage> {
                         child: Row(
                           children: <Widget>[
                             ElevatedButton(
-                              onPressed: () => bloc.add(PlayerSetExpEvent(player: state.player, exp: state.player.exp-1)),
+                              onPressed: () => bloc.add(PlayerSetExpEvent(player: state.player!, exp: state.player!.exp-1)),
                               child: const Icon(Icons.remove),
                             ),
                             Flexible(
@@ -160,7 +160,7 @@ class _PlayerPageState extends State<PlayerPage> {
                               ),
                             ),
                             ElevatedButton(
-                              onPressed: () => bloc.add(PlayerSetExpEvent(player: state.player, exp: state.player.exp+1)),
+                              onPressed: () => bloc.add(PlayerSetExpEvent(player: state.player!, exp: state.player!.exp+1)),
                               child: const Icon(Icons.add),
                             ),
                           ],

@@ -63,7 +63,7 @@ class _AddSkillPageState extends State<AddSkillPage> {
                     onPressed: () async {
                       if (formKey.currentState?.validate() == true) {
                         Skill skill = Skill(id: idGenerator(), name: name.text, description: description.text);
-                        getIt<SkillsBloc>().add(SkillAddEvent(skill));
+                        getIt<SkillsBloc>().add(AddSkillEvent(skill));
                         Navigator.of(context).pop();
                       }
                     },

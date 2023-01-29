@@ -1,5 +1,5 @@
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
-import 'package:game_book_counter/src/domain/skill/skill_repository.dart';
+import 'package:game_book_counter/src/domain/skill/repository/skill_repository.dart';
 
 class GetAllSkills {
   final SkillRepository repository;

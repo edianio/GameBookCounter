@@ -1,7 +1,7 @@
-import 'package:game_book_counter/src/domain/skill/skill_repository.dart';
+import 'package:game_book_counter/src/domain/skill/repository/skill_repository.dart';
 import 'package:game_book_counter/src/domain/skill/use_cases/add_skill.dart';
 import 'package:game_book_counter/src/domain/skill/use_cases/get_all_skills.dart';
-import 'package:game_book_counter/src/external/datasources/skill/skill_datasource_hive.dart';
+import 'package:game_book_counter/src/external/datasource/skill/skill_datasource_hive.dart';
 import 'package:game_book_counter/src/infra/skill/datasource/skill_datasource.dart';
 import 'package:game_book_counter/src/infra/skill/repository/skill_repository_impl.dart';
 import 'package:game_book_counter/src/modules/service_locator_setup.dart';

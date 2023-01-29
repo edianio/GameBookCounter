@@ -1,8 +1,12 @@
 class PageConst {
   static const root = '/';
   static const player = '/player';
+  static const addPlayer = '/add_player';
   static const skills = '/skills';
   static const addSkill = '/add_skill';
+  static const items = '/items';
+  static const addItem = '/add_item';
+  static const inventory = '/inventory';
 }
 
 class DbConst {
@@ -33,10 +37,31 @@ class EntitiesConst {
   static const speed = 'speed';
   static const intelligence = 'intelligence';
   static const enabled = 'enabled';
+  static const quantity = 'quantity';
+  static const buyPrice = 'buyPrice';
+  static const sellPrice = 'sellPrice';
+  static const position = 'position';
+  static const equipped = 'equipped';
+  static const timeEffectInSeconds = 'timeEffectInSeconds';
+  static const playerId = 'playerId';
+  static const money = 'money';
+  static const items = 'items';
+  static const equipments = 'equipments';
+  static const consumables = 'consumables';
+  static const level = 'level';
+  static const exp = 'exp';
+  static const manaConsume = 'manaConsume';
+  static const itemConsume = 'itemConsume';
+  static const job = 'job';
+  static const alias = 'alias';
+  static const skills = 'skills';
+  static const spells = 'spells';
+  static const inventory = 'inventory';
 }
 
 class AppText {
   static const character = 'Personagem';
+  static const attributes = 'Atributos';
   static const level = 'Nível';
   static const exp = 'Experiência';
   static const job = 'Classe';
@@ -79,4 +104,5 @@ class AppText {
   static const alias = 'Apelido';
   static const description = 'Descrição';
   static const save = 'Salvar';
+  static const addPlayer = 'Adicionar Personagem';
 }

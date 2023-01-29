@@ -2,28 +2,28 @@ import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 
 abstract class SkillEvent {}
 
-class SkillAddEvent extends SkillEvent {
+class AddSkillEvent extends SkillEvent {
   final Skill skill;
 
-  SkillAddEvent(this.skill);
+  AddSkillEvent(this.skill);
 }
 
-class SkillUpdateEvent extends SkillEvent {
+class UpdateSkillEvent extends SkillEvent {
   final Skill skill;
 
-  SkillUpdateEvent(this.skill);
+  UpdateSkillEvent(this.skill);
 }
 
-class SkillRemoveEvent extends SkillEvent {
+class RemoveSkillEvent extends SkillEvent {
   final String id;
 
-  SkillRemoveEvent(this.id);
+  RemoveSkillEvent(this.id);
 }
 
-class SkillGetEvent extends SkillEvent {
+class GetSkillEvent extends SkillEvent {
   final String id;
 
-  SkillGetEvent(this.id);
+  GetSkillEvent(this.id);
 }
 
-class SkillGetAllEvent extends SkillEvent {}
+class GetAllSkillsEvent extends SkillEvent {}

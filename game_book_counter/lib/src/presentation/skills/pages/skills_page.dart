@@ -7,7 +7,7 @@ import 'package:game_book_counter/src/presentation/commons/loading_indicator.dar
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skill_event.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skill_state.dart';
-import 'package:game_book_counter/src/presentation/skills/plages/components/skills_list_item.dart';
+import 'package:game_book_counter/src/presentation/skills/pages/components/skills_list_item.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class SkillsPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _SkillsPageState extends State<SkillsPage> {
   void initState() {
     super.initState();
     bloc = getIt<SkillsBloc>();
-    bloc.add(SkillGetAllEvent());
+    bloc.add(GetAllSkillsEvent());
   }
 
   @override
@@ -59,14 +59,6 @@ class _SkillsPageState extends State<SkillsPage> {
                   ),
                 ),
               ],
-            );
-            return SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return SkillsListItem(skill: state.skills[index]);
-                },
-                childCount: state.skills.length,
-              ),
             );
           }
           return ErrorIndicatorCard(error: (state as SkillsExceptionState).error);

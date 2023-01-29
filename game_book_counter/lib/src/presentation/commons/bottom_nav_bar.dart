@@ -25,7 +25,7 @@ class BottomNavBar extends StatelessWidget {
 
             BottomNavigationBarItem(
               icon: Icon(Icons.menu_book,),
-              label: 'Início',
+              label: 'Status',
             ),
 
             BottomNavigationBarItem(

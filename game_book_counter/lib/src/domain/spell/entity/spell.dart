@@ -6,7 +6,7 @@ class Spell {
   String? description;
   int manaConsume;
   Item? itemConsume;
-  Function effect;
+  Function? effect;
   bool enabled;
 
   Spell({
@@ -15,7 +15,7 @@ class Spell {
     this.description,
     this.manaConsume = 0,
     this.itemConsume,
-    required this.effect,
+    this.effect,
     this.enabled = true,
   });
 }

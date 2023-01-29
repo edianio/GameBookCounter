@@ -5,7 +5,7 @@ abstract class PlayerState {}
 class PlayerLoadingState implements PlayerState {}
 
 class PlayerLoadedState implements PlayerState {
-  final PlayerCharacter player;
+  final PlayerCharacter? player;
 
   PlayerLoadedState({required this.player});
 }

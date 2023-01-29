@@ -1,6 +1,7 @@
 import 'package:game_book_counter/src/domain/attributes/entity/attributes.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 
+
 class AttributesDto {
   int life;
   int mana;

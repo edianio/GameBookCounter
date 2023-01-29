@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
-import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
+import 'package:game_book_counter/src/presentation/inventory/pages/inventory_page.dart';
+import 'package:game_book_counter/src/presentation/items/pages/add_item_page.dart';
+import 'package:game_book_counter/src/presentation/items/pages/items_page.dart';
 import 'package:game_book_counter/src/presentation/main/base_page.dart';
+import 'package:game_book_counter/src/presentation/player/pages/add_player_page.dart';
 import 'package:game_book_counter/src/presentation/player/pages/player_page.dart';
-import 'package:game_book_counter/src/presentation/skills/plages/add_skill_page.dart';
-import 'package:game_book_counter/src/presentation/skills/plages/skills_page.dart';
+import 'package:game_book_counter/src/presentation/skills/pages/add_skill_page.dart';
+import 'package:game_book_counter/src/presentation/skills/pages/skills_page.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class AppGeneratedRoute {
@@ -21,6 +24,11 @@ class AppGeneratedRoute {
           builder: (_) => PlayerPage(player: settings.arguments as PlayerCharacter),
           settings: settings,
         );
+      case PageConst.addPlayer:
+        return MaterialPageRoute(
+          builder: (_) => const AddPlayerPage(),
+          settings: settings,
+        );
       case PageConst.skills:
         return MaterialPageRoute(
           builder: (_) => const SkillsPage(),
@@ -29,6 +37,21 @@ class AppGeneratedRoute {
       case PageConst.addSkill:
         return MaterialPageRoute(
           builder: (_) => const AddSkillPage(),
+          settings: settings,
+        );
+      case PageConst.inventory:
+        return MaterialPageRoute(
+          builder: (_) => const InventoryPage(),
+          settings: settings,
+        );
+      case PageConst.items:
+        return MaterialPageRoute(
+          builder: (_) => const ItemsPage(),
+          settings: settings,
+        );
+      case PageConst.addItem:
+        return MaterialPageRoute(
+          builder: (_) => const AddItemPage(),
           settings: settings,
         );
       default:

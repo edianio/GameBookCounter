@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   uuid: ^3.0.7
+  lottie: ^2.2.0
 
   # Service locator
   get_it: ^7.2.0
@@ -106,6 +107,7 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/
+    - assets/lottie/
 
   fonts:
     - family: Roboto
