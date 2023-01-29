@@ -103,8 +103,10 @@ class _AddPlayerPageState extends State<AddPlayerPage> {
                     controller: level,
                     decoration: const InputDecoration(
                       labelText: AppText.level,
+                      counterText: '',
                     ),
                     keyboardType: TextInputType.number,
+                    maxLength: 4,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
                     ],
@@ -117,7 +119,9 @@ class _AddPlayerPageState extends State<AddPlayerPage> {
                     controller: exp,
                     decoration: const InputDecoration(
                       labelText: AppText.exp,
+                      counterText: '',
                     ),
+                    maxLength: 4,
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
@@ -162,6 +166,8 @@ class _AddPlayerPageState extends State<AddPlayerPage> {
                                 alias: alias.text.isEmpty ? null : alias.text,
                                 description: description.text.isEmpty ? null : description.text,
                                 attributes: attributes,
+                                level: level.text.isEmpty ? 1 : int.parse(level.text),
+                                exp: exp.text.isEmpty ? 1 : int.parse(exp.text),
                                 skills: [],
                                 spells: [],
                                 equipments: [],
