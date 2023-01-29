@@ -79,6 +79,7 @@ class AppText {
   static const buyPrice = 'Valor de compra';
   static const skill = 'Habilidade';
   static const skills = 'Habilidades';
+  static const createSkill = 'Criar Habilidade';
   static const addSkill = 'Adicionar habilidade';
   static const equipment = 'Equipamento';
   static const equipments = 'Equipamentos';
@@ -103,6 +104,9 @@ class AppText {
   static const name = 'Nome';
   static const alias = 'Apelido';
   static const description = 'Descrição';
+  static const add = 'Adicionar';
+  static const create = 'Criar';
   static const save = 'Salvar';
+  static const close = 'Fechar';
   static const addPlayer = 'Adicionar Personagem';
 }

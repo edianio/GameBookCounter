@@ -19,8 +19,8 @@ class SkillRepositoryImpl implements SkillRepository {
   }
 
   @override
-  Future<List<Skill>> getAllSkills() async {
+  Stream<List<Skill>> getAllSkills() async* {
     final response = await datasource.getAllSkills();
-    return response.map((e) => SkillDto.fromMap(e as Map<String, dynamic>).toEntity()).toList();
+    yield response.map((e) => SkillDto.fromMap(e as Map<String, dynamic>).toEntity()).toList();
   }
 }

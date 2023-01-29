@@ -14,22 +14,25 @@ class SkillsBloc extends Bloc<SkillEvent, SkillState>{
     on<GetAllSkillsEvent>(_getAll, transformer: sequential());
   }
 
+  void init() async {
+    add(GetAllSkillsEvent());
+  }
+
   Future<void> _addSkill(AddSkillEvent event, Emitter emit) async {
-    await addSkill(event.skill).then(
-      (data) {
-        add(GetAllSkillsEvent());
-      },
-      onError: (e, s) {
-        emit(SkillsExceptionState(e.toString()));
-      },
-    );
+    await addSkill(event.skill);
+    add(GetAllSkillsEvent());
   }
 
   Future<void> _getAll(GetAllSkillsEvent event, Emitter emit) async {
-    await getAll().then((data) {
-      emit(SkillsLoadedState(skills: data));
-    }).catchError((e, s) {
-      emit(SkillsExceptionState(e.toString()));
-    });
+    emit(SkillsLoadingState());
+    await emit.onEach(
+      getAll(),
+      onData: (data) {
+        emit(SkillsLoadedState(skills: data));
+      },
+      onError: (e,s) {
+        emit(SkillsExceptionState(e.toString()));
+      },
+    );
   }
 }

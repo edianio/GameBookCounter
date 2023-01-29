@@ -6,5 +6,5 @@ class GetAllSkills {
 
   GetAllSkills(this.repository);
 
-  Future<List<Skill>> call() => repository.getAllSkills();
+  Stream<List<Skill>> call() => repository.getAllSkills();
 }

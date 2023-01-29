@@ -69,7 +69,9 @@ class _AddPlayerPageState extends State<AddPlayerPage> {
                     controller: name,
                     decoration: const InputDecoration(
                       labelText: AppText.name,
+                      counterText: '',
                     ),
+                    maxLength: 20,
                     keyboardType: TextInputType.text,
                     autocorrect: false,
                     validator: (value) => Validator().personAlias(value),
@@ -81,7 +83,9 @@ class _AddPlayerPageState extends State<AddPlayerPage> {
                     controller: alias,
                     decoration: const InputDecoration(
                       labelText: AppText.alias,
+                      counterText: '',
                     ),
+                    maxLength: 20,
                     keyboardType: TextInputType.text,
                     autocorrect: false,
                   ),
@@ -92,7 +96,9 @@ class _AddPlayerPageState extends State<AddPlayerPage> {
                     controller: description,
                     decoration: const InputDecoration(
                       labelText: AppText.description,
+                      counterText: '',
                     ),
+                    maxLength: 150,
                     keyboardType: TextInputType.text,
                     autocorrect: false,
                   ),

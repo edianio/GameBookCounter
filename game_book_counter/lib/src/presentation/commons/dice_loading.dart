@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class LoadingIndicator extends StatefulWidget {
-  const LoadingIndicator({Key? key}) : super(key: key);
+class DiceLoading extends StatefulWidget {
+  const DiceLoading({Key? key}) : super(key: key);
 
   @override
-  State<LoadingIndicator> createState() => _LoadingIndicatorState();
+  State<DiceLoading> createState() => _DiceLoadingState();
 }
 
-class _LoadingIndicatorState extends State<LoadingIndicator> {
+class _DiceLoadingState extends State<DiceLoading> {
   final double width = 160;
 
   @override
@@ -19,7 +19,7 @@ class _LoadingIndicatorState extends State<LoadingIndicator> {
         child: SizedBox(
           width: width,
           child: Lottie.asset(
-            'assets/lottie/smile-loading-animation.json',
+            'assets/lottie/dice-6.json',
             // controller: _controller,
             repeat: true,
           ),

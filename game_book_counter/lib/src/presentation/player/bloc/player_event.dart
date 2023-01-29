@@ -1,4 +1,5 @@
 import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
+import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 
 abstract class PlayerEvent {}
 
@@ -28,4 +29,10 @@ class UpdatePlayerEvent extends PlayerEvent {
   final PlayerCharacter player;
 
   UpdatePlayerEvent(this.player);
+}
+
+class AddPlayerSkillEvent extends PlayerEvent {
+  final Skill skill;
+
+  AddPlayerSkillEvent(this.skill);
 }

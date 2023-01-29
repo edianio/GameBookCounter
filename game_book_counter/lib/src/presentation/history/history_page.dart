@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/presentation/commons/bottom_nav_bar.dart';
+import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class HistoryPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
 
-                Container(),
+                LoadingIndicator(),
 
               ],
             ),

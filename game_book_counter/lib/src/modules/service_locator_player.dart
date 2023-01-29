@@ -1,5 +1,6 @@
 import 'package:game_book_counter/src/domain/player/repository/player_character_repository.dart';
 import 'package:game_book_counter/src/domain/player/use_cases/add_player.dart';
+import 'package:game_book_counter/src/domain/player/use_cases/add_player_skill.dart';
 import 'package:game_book_counter/src/domain/player/use_cases/get_player.dart';
 import 'package:game_book_counter/src/domain/player/use_cases/player_set_exp.dart';
 import 'package:game_book_counter/src/domain/player/use_cases/player_set_level.dart';
@@ -21,6 +22,7 @@ void serviceLocatorPlayer() {
   getIt.registerLazySingleton<UpdatePlayer>(() => UpdatePlayer(getIt()));
   getIt.registerLazySingleton<PlayerSetLevel>(() => PlayerSetLevel());
   getIt.registerLazySingleton<PlayerSetExp>(() => PlayerSetExp());
+  getIt.registerLazySingleton<AddPlayerSkill>(() => AddPlayerSkill());
   // BLOC
   getIt.registerSingleton<PlayerBloc>(PlayerBloc(
     getPlayer: getIt(),
@@ -28,5 +30,6 @@ void serviceLocatorPlayer() {
     updatePlayer: getIt(),
     setLevel: getIt(),
     setExp: getIt(),
+    addPlayerSkill: getIt(),
   ));
 }
