@@ -4,6 +4,7 @@ import 'package:game_book_counter/src/domain/player/use_cases/add_player_skill.d
 import 'package:game_book_counter/src/domain/player/use_cases/get_player.dart';
 import 'package:game_book_counter/src/domain/player/use_cases/player_set_exp.dart';
 import 'package:game_book_counter/src/domain/player/use_cases/player_set_level.dart';
+import 'package:game_book_counter/src/domain/player/use_cases/remove_player_skill.dart';
 import 'package:game_book_counter/src/domain/player/use_cases/update_player.dart';
 import 'package:game_book_counter/src/external/datasource/player/player_character_datasource_hive.dart';
 import 'package:game_book_counter/src/infra/player/datasource/player_character_datasource.dart';
@@ -23,13 +24,15 @@ void serviceLocatorPlayer() {
   getIt.registerLazySingleton<PlayerSetLevel>(() => PlayerSetLevel());
   getIt.registerLazySingleton<PlayerSetExp>(() => PlayerSetExp());
   getIt.registerLazySingleton<AddPlayerSkill>(() => AddPlayerSkill());
+  getIt.registerLazySingleton<RemovePlayerSkill>(() => RemovePlayerSkill());
   // BLOC
   getIt.registerSingleton<PlayerBloc>(PlayerBloc(
     getPlayer: getIt(),
     addPlayer: getIt(),
     updatePlayer: getIt(),
-    setLevel: getIt(),
-    setExp: getIt(),
+    playerSetLevel: getIt(),
+    playerSetExp: getIt(),
     addPlayerSkill: getIt(),
+    removePlayerSkill: getIt(),
   ));
 }

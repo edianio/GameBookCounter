@@ -1,6 +1,6 @@
 # game_book_counter
 
-A new Flutter project.
+Made by a RPG player...
 
 ## Getting Started
 

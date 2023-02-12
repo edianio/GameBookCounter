@@ -36,3 +36,9 @@ class AddPlayerSkillEvent extends PlayerEvent {
 
   AddPlayerSkillEvent(this.skill);
 }
+
+class RemovePlayerSkillEvent extends PlayerEvent {
+  final Skill skill;
+
+  RemovePlayerSkillEvent(this.skill);
+}

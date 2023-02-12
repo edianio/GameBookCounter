@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                           playerBloc.add(AddPlayerSkillEvent(skill));
                         }
                       },
-                      onTapRemoveSkill: () {},
+                      onTapRemoveSkill: (skill) => playerBloc.add(RemovePlayerSkillEvent(skill)),
                     ),
                   ],
                 );

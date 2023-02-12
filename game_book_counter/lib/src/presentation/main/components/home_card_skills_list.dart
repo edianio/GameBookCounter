@@ -15,7 +15,7 @@ class HomeCardSkillsList extends StatefulWidget {
   final List<Skill> skills;
   final VoidCallback onTapCreateSkill;
   final VoidCallback onTapAddSkill;
-  final VoidCallback onTapRemoveSkill;
+  final Function(Skill) onTapRemoveSkill;
 
   const HomeCardSkillsList(
       {required this.skills,
@@ -64,7 +64,12 @@ class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
               if (widget.skills.isEmpty) {
                 return Container();
               }
-              return HomeCardSkillsListItem(skill: widget.skills[index]);
+              return HomeCardSkillsListItem(
+                skill: widget.skills[index],
+                onRemoveItem: () => widget.onTapRemoveSkill(
+                  widget.skills[index],
+                ),
+              );
             },
           ),
           Row(
