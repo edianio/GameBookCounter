@@ -6,8 +6,8 @@ import 'package:game_book_counter/src/modules/service_locator_setup.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
 import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list_item.dart';
-import 'package:game_book_counter/src/presentation/skills/bloc/skill_event.dart';
-import 'package:game_book_counter/src/presentation/skills/bloc/skill_state.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_event.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_state.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 

@@ -1,5 +1,6 @@
 import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
+import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 
 abstract class PlayerEvent {}
 
@@ -41,4 +42,16 @@ class RemovePlayerSkillEvent extends PlayerEvent {
   final Skill skill;
 
   RemovePlayerSkillEvent(this.skill);
+}
+
+class AddPlayerSpellEvent extends PlayerEvent {
+  final Spell spell;
+
+  AddPlayerSpellEvent(this.spell);
+}
+
+class RemovePlayerSpellEvent extends PlayerEvent {
+  final Spell spell;
+
+  RemovePlayerSpellEvent(this.spell);
 }

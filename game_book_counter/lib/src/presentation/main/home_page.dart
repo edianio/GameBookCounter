@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
+import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/modules/service_locator_setup.dart';
 import 'package:game_book_counter/src/presentation/commons/bottom_nav_bar.dart';
 import 'package:game_book_counter/src/presentation/commons/custom_dialogs.dart';
 import 'package:game_book_counter/src/presentation/commons/error_indicator_card.dart';
 import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
+import 'package:game_book_counter/src/presentation/main/components/homa_card_spells_list.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_player_status.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list.dart';
 import 'package:game_book_counter/src/presentation/player/bloc/player_bloc.dart';
 import 'package:game_book_counter/src/presentation/player/bloc/player_event.dart';
 import 'package:game_book_counter/src/presentation/player/bloc/player_state.dart';
-import 'package:game_book_counter/src/presentation/skills/bloc/skill_event.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_event.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
+import 'package:game_book_counter/src/presentation/spells/bloc/spells_bloc.dart';
+import 'package:game_book_counter/src/presentation/spells/bloc/spells_event.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -56,7 +60,9 @@ class _HomePageState extends State<HomePage> {
                 return  Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
+
                     HomeCardPlayerStatus(player: state.player!),
+
                     HomeCardSkillsList(
                       skills: state.player!.skills,
                       onTapCreateSkill: () async {
@@ -73,6 +79,24 @@ class _HomePageState extends State<HomePage> {
                         }
                       },
                       onTapRemoveSkill: (skill) => playerBloc.add(RemovePlayerSkillEvent(skill)),
+                    ),
+
+                    HomeCardSpellsList(
+                      spells: state.player!.spells,
+                      onTapCreateSpell: () async {
+                        final spellBloc = getIt<SpellsBloc>();
+                        Spell? spell = await CustomDialogs().showCreateSpellDialog(context);
+                        if (spell != null) {
+                          spellBloc.add(AddSpellEvent(spell));
+                        }
+                      },
+                      onTapAddSpell: () async {
+                        Spell? spell = await CustomDialogs().showAddSpellToPlayerDialog(context);
+                        if (spell != null) {
+                          playerBloc.add(AddPlayerSpellEvent(spell));
+                        }
+                      },
+                      onTapRemoveSpell: (spell) => playerBloc.add(RemovePlayerSpellEvent(spell)),
                     ),
                   ],
                 );

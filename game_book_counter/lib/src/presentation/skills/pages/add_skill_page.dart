@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/modules/service_locator_setup.dart';
-import 'package:game_book_counter/src/presentation/skills/bloc/skill_event.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_event.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
 import 'package:game_book_counter/src/utils/id_generator.dart';
 import 'package:game_book_counter/src/utils/validator.dart';

@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
+import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 
-class AddSkillForm extends StatefulWidget {
-  final Function(Skill) onConfirm;
+class AddSpellForm extends StatefulWidget {
+  final Function(Spell) onConfirm;
   final VoidCallback onClose;
-  final List<Skill> skills;
+  final List<Spell> spells;
 
-  const AddSkillForm({required this.skills, required this.onConfirm, required this.onClose, Key? key,}) : super(key: key);
+  const AddSpellForm({required this.spells, required this.onConfirm, required this.onClose, Key? key,}) : super(key: key);
 
   @override
-  State<AddSkillForm> createState() => _AddSkillFormState();
+  State<AddSpellForm> createState() => _AddSpellFormState();
 }
 
-class _AddSkillFormState extends State<AddSkillForm> {
-  late Skill skill;
-  final List<DropdownMenuItem<Skill>> items = [];
+class _AddSpellFormState extends State<AddSpellForm> {
+  late Spell spell;
+  final List<DropdownMenuItem<Spell>> items = [];
 
   @override
   void initState() {
     super.initState();
-    skill = widget.skills.first;
+    spell = widget.spells.first;
     items.addAll(_generateItems());
   }
 
-  List<DropdownMenuItem<Skill>> _generateItems() => List.generate(
-        widget.skills.length,
+  List<DropdownMenuItem<Spell>> _generateItems() => List.generate(
+    widget.spells.length,
         (index) => DropdownMenuItem(
-          key: Key(index.toString()),
-          value: widget.skills[index],
-          child: Text(widget.skills[index].name),
-        ),
-      );
+      key: Key(index.toString()),
+      value: widget.spells[index],
+      child: Text(widget.spells[index].name),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +42,11 @@ class _AddSkillFormState extends State<AddSkillForm> {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: DropdownButtonFormField<Skill>(
-              value: skill,
+            child: DropdownButtonFormField<Spell>(
+              value: spell,
               onChanged: (value) {
                 setState(() {
-                  skill = value!;
+                  spell = value!;
                 });
               },
               items: items,
@@ -56,7 +56,7 @@ class _AddSkillFormState extends State<AddSkillForm> {
             widthFactor: 1,
             child: ElevatedButton(
               onPressed: () async {
-                widget.onConfirm(skill);
+                widget.onConfirm(spell);
               },
               child: const Text(AppText.save),
             ),

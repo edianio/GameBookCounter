@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
-import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list_item.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_spells_list_item.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class HomeCardSpellsList extends StatelessWidget {
   final List<Spell> spells;
+  final VoidCallback onTapCreateSpell;
   final VoidCallback onTapAddSpell;
-  final VoidCallback onTapRemoveSpell;
+  final Function(Spell) onTapRemoveSpell;
 
   const HomeCardSpellsList({
     required this.spells,
+    required this.onTapCreateSpell,
     required this.onTapAddSpell,
     required this.onTapRemoveSpell,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,18 +45,33 @@ class HomeCardSpellsList extends StatelessWidget {
               if (spells.isEmpty) {
                 return Container();
               }
-              return HomeCardSpellsListItem(spell: spells[index]);
+              return HomeCardSpellsListItem(
+                spell: spells[index],
+                onRemoveItem: () => onTapRemoveSpell(spells[index]),
+              );
             },
           ),
-          FractionallySizedBox(
-            widthFactor: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: ElevatedButton(
-                onPressed: () => onTapAddSpell(),
-                child: const Text(AppText.addSpell),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () => onTapAddSpell(),
+                    child: const Text(AppText.add),
+                  ),
+                ),
               ),
-            ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () => onTapCreateSpell(),
+                    child: const Text(AppText.create),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

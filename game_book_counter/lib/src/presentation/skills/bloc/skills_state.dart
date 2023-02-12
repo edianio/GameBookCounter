@@ -1,16 +1,16 @@
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 
-abstract class SkillState {}
+abstract class SkillsState {}
 
-class SkillsLoadingState extends SkillState {}
+class SkillsLoadingState extends SkillsState {}
 
-class SkillsLoadedState extends SkillState {
+class SkillsLoadedState extends SkillsState {
   final List<Skill> skills;
 
   SkillsLoadedState({required this.skills});
 }
 
-class SkillsExceptionState extends SkillState {
+class SkillsExceptionState extends SkillsState {
   final String error;
 
   SkillsExceptionState(this.error);
