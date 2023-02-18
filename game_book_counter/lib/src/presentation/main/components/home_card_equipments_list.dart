@@ -43,7 +43,10 @@ class HomeCardEquipmentsList extends StatelessWidget {
               if (equipments.isEmpty) {
                 return Container();
               }
-              return HomeCardEquipmentsListItem(equipment: equipments[index],);
+              return HomeCardEquipmentsListItem(
+                equipment: equipments[index],
+                onRemoveItem: () => onTapRemoveEquipment(),
+              );
             },
           ),
           FractionallySizedBox(
@@ -52,7 +55,7 @@ class HomeCardEquipmentsList extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: ElevatedButton(
                 onPressed: () => onTapAddEquipment(),
-                child: const Text(AppText.addEquipment),
+                child: const Text(AppText.equipItem),
               ),
             ),
           ),

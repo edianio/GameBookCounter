@@ -57,7 +57,7 @@ class HomeCardSpellsList extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ElevatedButton(
-                    onPressed: () => onTapAddSpell(),
+                    onPressed: onTapAddSpell,
                     child: const Text(AppText.add),
                   ),
                 ),
@@ -66,7 +66,7 @@ class HomeCardSpellsList extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ElevatedButton(
-                    onPressed: () => onTapCreateSpell(),
+                    onPressed: onTapCreateSpell,
                     child: const Text(AppText.create),
                   ),
                 ),

@@ -17,13 +17,34 @@ import 'package:game_book_counter/src/presentation/spells/bloc/spells_bloc.dart'
 import 'package:game_book_counter/src/presentation/spells/bloc/spells_state.dart';
 
 class CustomDialogs {
-  Future<Attributes> showAttributesDialog(BuildContext context) async => await showDialog(
+  void showMessageDialog(BuildContext context, String title, String message) async =>
+      await showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(title),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
+            ),
+            content: Text(message),
+            actions: <Widget>[
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text(AppText.close),
+              ),
+            ],
+          );
+        },
+      );
+
+  Future<Attributes> showAttributesDialog(BuildContext context) async =>
+      await showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
             title: const Text(AppText.attributes),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(32),
+              borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
             ),
             content: AttributesForm(
               onConfirm: (data) => Navigator.of(context).pop(data),
@@ -32,93 +53,97 @@ class CustomDialogs {
         },
       );
 
-  Future<Skill?> showCreateSkillDialog(BuildContext context) async => await showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text(AppText.createSkill),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32),
-        ),
-        content: CreateSkillForm(
-          onConfirm: (data) => Navigator.of(context).pop(data),
-          onClose: () => Navigator.of(context).pop(null),
-        ),
+  Future<Skill?> showCreateSkillDialog(BuildContext context) async =>
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text(AppText.createSkill),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
+            ),
+            content: CreateSkillForm(
+              onConfirm: (data) => Navigator.of(context).pop(data),
+              onClose: () => Navigator.of(context).pop(null),
+            ),
+          );
+        },
       );
-    },
-  );
 
-  Future<Skill?> showAddSkillToPlayerDialog(BuildContext context) async => await showDialog(
+  Future<Skill?> showAddSkillToPlayerDialog(BuildContext context) async =>
+      await showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) {
           final bloc = getIt<SkillsBloc>();
           bloc.init();
           return BlocBuilder(
-              bloc: bloc,
-              builder: (context, state) {
-                if (state is SkillsLoadedState) {
-                  return AlertDialog(
-                    title: const Text(AppText.addSkill),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                    content: AddSkillForm(
-                      skills: state.skills,
-                      onConfirm: (data) => Navigator.of(context).pop(data),
-                      onClose: () => Navigator.of(context).pop(null),
-                    ),
-                  );
-                }
-                return const LoadingIndicator();
-              },
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is SkillsLoadedState) {
+                return AlertDialog(
+                  title: const Text(AppText.addSkill),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
+                  ),
+                  content: AddSkillForm(
+                    skills: state.skills,
+                    onConfirm: (data) => Navigator.of(context).pop(data),
+                    onClose: () => Navigator.of(context).pop(null),
+                  ),
+                );
+              }
+              return const LoadingIndicator();
+            },
           );
         },
       );
 
-  Future<Spell?> showCreateSpellDialog(BuildContext context) async => await showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text(AppText.createSpell),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(32),
-        ),
-        content: CreateSpellForm(
-          onConfirm: (data) => Navigator.of(context).pop(data),
-          onClose: () => Navigator.of(context).pop(null),
-        ),
-      );
-    },
-  );
-
-  Future<Spell?> showAddSpellToPlayerDialog(BuildContext context) async => await showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) {
-      final bloc = getIt<SpellsBloc>();
-      bloc.init();
-      return BlocBuilder(
-        bloc: bloc,
-        builder: (context, state) {
-          if (state is SpellsLoadedState) {
-            return AlertDialog(
-              title: const Text(AppText.addSkill),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32),
-              ),
-              content: AddSpellForm(
-                spells: state.spells,
-                onConfirm: (data) => Navigator.of(context).pop(data),
-                onClose: () => Navigator.of(context).pop(null),
-              ),
-            );
-          }
-          return const LoadingIndicator();
+  Future<Spell?> showCreateSpellDialog(BuildContext context) async =>
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text(AppText.createSpell),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
+            ),
+            content: CreateSpellForm(
+              onConfirm: (data) => Navigator.of(context).pop(data),
+              onClose: () => Navigator.of(context).pop(null),
+            ),
+          );
         },
       );
-    },
-  );
+
+  Future<Spell?> showAddSpellToPlayerDialog(BuildContext context) async =>
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          final bloc = getIt<SpellsBloc>();
+          bloc.init();
+          return BlocBuilder(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is SpellsLoadedState) {
+                return AlertDialog(
+                  title: const Text(AppText.addSkill),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
+                  ),
+                  content: AddSpellForm(
+                    spells: state.spells,
+                    onConfirm: (data) => Navigator.of(context).pop(data),
+                    onClose: () => Navigator.of(context).pop(null),
+                  ),
+                );
+              }
+              return const LoadingIndicator();
+            },
+          );
+        },
+      );
 }

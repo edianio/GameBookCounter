@@ -9,35 +9,35 @@ InputDecorationTheme myInputDecorationTheme() => InputDecorationTheme(
   ),
   labelStyle: const TextStyle(color: ColorTable.primary),
   enabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(32),
+    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
     borderSide: const BorderSide(
       color: ColorTable.primary,
       width: 1,
     ),
   ),
   disabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(32),
+    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
     borderSide: const BorderSide(
       color: ColorTable.disabledItem,
       width: 1,
     ),
   ),
   focusedBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(32),
+    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
     borderSide: const BorderSide(
       color: ColorTable.primaryLight,
       width: 2,
     ),
   ),
   errorBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(32),
+    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
     borderSide: const BorderSide(
       color: Colors.red,
       width: 1,
     ),
   ),
   focusedErrorBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(32),
+    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
     borderSide: const BorderSide(
       color: Colors.red,
       width: 1,

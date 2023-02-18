@@ -5,13 +5,13 @@ ElevatedButtonThemeData myElevatedButtonTheme() => ElevatedButtonThemeData(
     onPrimary: Colors.white,
     primary: ColorTable.primary,
     elevation: 1,
-    padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
     textStyle: const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w600,
     ),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(32),
+      borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
     ),
   ),
 );

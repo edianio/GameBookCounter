@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class CardDefault extends StatelessWidget {
@@ -13,7 +14,7 @@ class CardDefault extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(right: 16, left: 16, top: 16,),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
           border: Border.all(
             color: ColorTable.primary,
             width: 1,

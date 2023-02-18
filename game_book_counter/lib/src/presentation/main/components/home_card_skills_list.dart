@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
-import 'package:game_book_counter/src/modules/service_locator_setup.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
-import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list_item.dart';
-import 'package:game_book_counter/src/presentation/skills/bloc/skills_event.dart';
-import 'package:game_book_counter/src/presentation/skills/bloc/skills_state.dart';
-import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class HomeCardSkillsList extends StatefulWidget {
@@ -30,14 +24,6 @@ class HomeCardSkillsList extends StatefulWidget {
 }
 
 class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
-  // late SkillsBloc bloc;
-
-  @override
-  void initState() {
-    super.initState();
-    // bloc = getIt<SkillsBloc>();
-  }
-
   @override
   Widget build(BuildContext context) {
     return CardDefault(
@@ -66,9 +52,7 @@ class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
               }
               return HomeCardSkillsListItem(
                 skill: widget.skills[index],
-                onRemoveItem: () => widget.onTapRemoveSkill(
-                  widget.skills[index],
-                ),
+                onRemoveItem: () => widget.onTapRemoveSkill(widget.skills[index]),
               );
             },
           ),
@@ -78,7 +62,7 @@ class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ElevatedButton(
-                    onPressed: () => widget.onTapAddSkill(),
+                    onPressed: widget.onTapAddSkill,
                     child: const Text(AppText.add),
                   ),
                 ),
@@ -87,7 +71,7 @@ class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ElevatedButton(
-                    onPressed: () => widget.onTapCreateSkill(),
+                    onPressed: widget.onTapCreateSkill,
                     child: const Text(AppText.create),
                   ),
                 ),

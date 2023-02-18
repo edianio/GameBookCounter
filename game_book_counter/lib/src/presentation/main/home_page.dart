@@ -9,6 +9,7 @@ import 'package:game_book_counter/src/presentation/commons/custom_dialogs.dart';
 import 'package:game_book_counter/src/presentation/commons/error_indicator_card.dart';
 import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
 import 'package:game_book_counter/src/presentation/main/components/homa_card_spells_list.dart';
+import 'package:game_book_counter/src/presentation/main/components/home_card_equipments_list.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_player_status.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list.dart';
 import 'package:game_book_counter/src/presentation/player/bloc/player_bloc.dart';
@@ -16,8 +17,10 @@ import 'package:game_book_counter/src/presentation/player/bloc/player_event.dart
 import 'package:game_book_counter/src/presentation/player/bloc/player_state.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_event.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_state.dart';
 import 'package:game_book_counter/src/presentation/spells/bloc/spells_bloc.dart';
 import 'package:game_book_counter/src/presentation/spells/bloc/spells_event.dart';
+import 'package:game_book_counter/src/presentation/spells/bloc/spells_state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,7 +76,15 @@ class _HomePageState extends State<HomePage> {
                         }
                       },
                       onTapAddSkill: () async {
-                        Skill? skill = await CustomDialogs().showAddSkillToPlayerDialog(context,);
+                        final skillBloc = getIt<SkillsBloc>();
+                        Skill? skill;
+                        if (skillBloc.state is SkillsLoadedState) {
+                          if ((skillBloc.state as SkillsLoadedState).skills.isNotEmpty) {
+                            skill = await CustomDialogs().showAddSkillToPlayerDialog(context,);
+                          } else {
+                            CustomDialogs().showMessageDialog(context, AppText.skills, AppText.emptyListMessage(AppText.skill));
+                          }
+                        }
                         if (skill != null) {
                           playerBloc.add(AddPlayerSkillEvent(skill));
                         }
@@ -91,12 +102,26 @@ class _HomePageState extends State<HomePage> {
                         }
                       },
                       onTapAddSpell: () async {
-                        Spell? spell = await CustomDialogs().showAddSpellToPlayerDialog(context);
+                        final spellBloc = getIt<SpellsBloc>();
+                        Spell? spell;
+                        if (spellBloc.state is SpellsLoadedState) {
+                          if ((spellBloc.state as SpellsLoadedState).spells.isNotEmpty) {
+                            spell = await CustomDialogs().showAddSpellToPlayerDialog(context);
+                          } else {
+                            CustomDialogs().showMessageDialog(context, AppText.spells, AppText.emptyListMessage(AppText.spell));
+                          }
+                        }
                         if (spell != null) {
                           playerBloc.add(AddPlayerSpellEvent(spell));
                         }
                       },
                       onTapRemoveSpell: (spell) => playerBloc.add(RemovePlayerSpellEvent(spell)),
+                    ),
+
+                    HomeCardEquipmentsList(
+                      equipments: state.player!.equipments,
+                      onTapAddEquipment: () {},
+                      onTapRemoveEquipment: () {},
                     ),
                   ],
                 );

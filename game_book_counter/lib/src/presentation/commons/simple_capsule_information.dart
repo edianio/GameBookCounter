@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class SimpleCapsuleInformation extends StatelessWidget {
@@ -10,7 +11,7 @@ class SimpleCapsuleInformation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32),
+        borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
         border: Border.all(
           color: ColorTable.primary,
           width: 1,

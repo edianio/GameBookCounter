@@ -96,7 +96,6 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   }
 
   Future<void> _editPlayer(UpdatePlayerEvent event, Emitter emit) async {
-    emit(PlayerLoadingState());
     try {
       await _updatePlayer(event.player);
       emit(PlayerLoadedState(player: event.player));

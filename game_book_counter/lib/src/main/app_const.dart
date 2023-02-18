@@ -1,3 +1,7 @@
+class ParamsConst {
+  static const double defaultBorderRadius = 32;
+}
+
 class PageConst {
   static const root = '/';
   static const player = '/player';
@@ -84,6 +88,7 @@ class AppText {
   static const equipment = 'Equipamento';
   static const equipments = 'Equipamentos';
   static const addEquipment = 'Adicionar equipamentos';
+  static const equipItem = 'Equipar item';
   static const life = 'Vida';
   static const mana = 'Mana';
   static const attack = 'Ataque';
@@ -110,4 +115,6 @@ class AppText {
   static const save = 'Salvar';
   static const close = 'Fechar';
   static const addPlayer = 'Adicionar Personagem';
+
+  static emptyListMessage(String text) => 'Você não possui nenhum $text!\nÉ necessário criar algum $text, antes de tentar adicionar.';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class ErrorIndicatorCard extends StatelessWidget {
@@ -12,7 +13,7 @@ class ErrorIndicatorCard extends StatelessWidget {
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: ColorTable.warning,
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
           border: Border.all(
             color: Colors.white,
             width: 1,

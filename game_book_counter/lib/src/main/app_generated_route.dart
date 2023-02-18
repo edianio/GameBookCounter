@@ -74,7 +74,7 @@ class ErrorPage extends StatelessWidget{
           elevation: 1,
           margin: const EdgeInsets.symmetric(vertical: 32, horizontal: 20),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(32),
+            borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 32),

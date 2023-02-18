@@ -78,7 +78,10 @@ class HomeCardItemsList extends StatelessWidget {
               if (inventory.equipments[index].equipped) {
                 return Container();
               }
-              return HomeCardEquipmentsListItem(equipment: inventory.equipments[index],);
+              return HomeCardEquipmentsListItem(
+                equipment: inventory.equipments[index],
+                onRemoveItem: () {},
+              );
             },
           ),
           FractionallySizedBox(
