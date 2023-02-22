@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
+import 'package:game_book_counter/src/modules/service_locator_setup.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
+import 'package:game_book_counter/src/presentation/commons/custom_dialogs.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_spells_list_item.dart';
+import 'package:game_book_counter/src/presentation/spells/bloc/spells_bloc.dart';
+import 'package:game_book_counter/src/presentation/spells/bloc/spells_state.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
-class HomeCardSpellsList extends StatelessWidget {
+class HomeCardSpellsList extends StatefulWidget {
   final List<Spell> spells;
   final VoidCallback onTapCreateSpell;
-  final VoidCallback onTapAddSpell;
+  final Function(Spell?) onTapAddSpell;
   final Function(Spell) onTapRemoveSpell;
 
   const HomeCardSpellsList({
@@ -18,6 +22,20 @@ class HomeCardSpellsList extends StatelessWidget {
     required this.onTapRemoveSpell,
     super.key,
   });
+
+  @override
+  State<HomeCardSpellsList> createState() => _HomeCardSpellsListState();
+}
+
+class _HomeCardSpellsListState extends State<HomeCardSpellsList> {
+  late SpellsBloc spellsBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    spellsBloc = getIt<SpellsBloc>();
+    spellsBloc.init();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +58,14 @@ class HomeCardSpellsList extends StatelessWidget {
           ListView.builder(
             primary: false,
             shrinkWrap: true,
-            itemCount: spells.length,
+            itemCount: widget.spells.length,
             itemBuilder: (context, index){
-              if (spells.isEmpty) {
+              if (widget.spells.isEmpty) {
                 return Container();
               }
               return HomeCardSpellsListItem(
-                spell: spells[index],
-                onRemoveItem: () => onTapRemoveSpell(spells[index]),
+                spell: widget.spells[index],
+                onRemoveItem: () => widget.onTapRemoveSpell(widget.spells[index]),
               );
             },
           ),
@@ -57,7 +75,17 @@ class HomeCardSpellsList extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ElevatedButton(
-                    onPressed: onTapAddSpell,
+                    onPressed: () async {
+                      Spell? spell;
+                      if (spellsBloc.state is SpellsLoadedState) {
+                        if ((spellsBloc.state as SpellsLoadedState).spells.isNotEmpty) {
+                          spell = await CustomDialogs().showAddSpellToPlayerDialog(context);
+                        } else {
+                          CustomDialogs().showMessageDialog(context, AppText.spells, AppText.emptyListMessage(AppText.spell));
+                        }
+                      }
+                      widget.onTapAddSpell(spell);
+                    },
                     child: const Text(AppText.add),
                   ),
                 ),
@@ -66,7 +94,7 @@ class HomeCardSpellsList extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ElevatedButton(
-                    onPressed: onTapCreateSpell,
+                    onPressed: widget.onTapCreateSpell,
                     child: const Text(AppText.create),
                   ),
                 ),

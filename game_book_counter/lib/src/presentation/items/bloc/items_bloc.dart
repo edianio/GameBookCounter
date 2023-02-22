@@ -14,6 +14,10 @@ class ItemsBloc extends Bloc<ItemEvent, ItemState>{
     on<GetAllItemsEvent>(_getAll, transformer: sequential());
   }
 
+  void init() async {
+    add(GetAllItemsEvent());
+  }
+
   Future<void> _addItem(AddItemEvent event, Emitter emit) async {
     await addItem(event.item).then(
       (value) {

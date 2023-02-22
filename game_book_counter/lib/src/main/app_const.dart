@@ -112,6 +112,7 @@ class AppText {
   static const description = 'Descrição';
   static const add = 'Adicionar';
   static const create = 'Criar';
+  static const createItem = 'Criar item';
   static const save = 'Salvar';
   static const close = 'Fechar';
   static const addPlayer = 'Adicionar Personagem';

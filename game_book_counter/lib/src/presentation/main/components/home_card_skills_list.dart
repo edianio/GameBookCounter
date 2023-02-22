@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
+import 'package:game_book_counter/src/modules/service_locator_setup.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
+import 'package:game_book_counter/src/presentation/commons/custom_dialogs.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_skills_list_item.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
+import 'package:game_book_counter/src/presentation/skills/bloc/skills_state.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
 class HomeCardSkillsList extends StatefulWidget {
   final List<Skill> skills;
   final VoidCallback onTapCreateSkill;
-  final VoidCallback onTapAddSkill;
+  final Function(Skill?) onTapAddSkill;
   final Function(Skill) onTapRemoveSkill;
 
   const HomeCardSkillsList(
@@ -24,6 +28,21 @@ class HomeCardSkillsList extends StatefulWidget {
 }
 
 class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
+  late SkillsBloc skillBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    skillBloc = getIt<SkillsBloc>();
+    skillBloc.init();
+  }
+
+  @override
+  void dispose() {
+    skillBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return CardDefault(
@@ -62,7 +81,17 @@ class _HomeCardSkillsListState extends State<HomeCardSkillsList> {
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: ElevatedButton(
-                    onPressed: widget.onTapAddSkill,
+                    onPressed: () async {
+                      Skill? skill;
+                      if (skillBloc.state is SkillsLoadedState) {
+                        if ((skillBloc.state as SkillsLoadedState).skills.isNotEmpty) {
+                          skill = await CustomDialogs().showAddSkillToPlayerDialog(context);
+                        } else {
+                          CustomDialogs().showMessageDialog(context, AppText.skills, AppText.emptyListMessage(AppText.skill));
+                        }
+                      }
+                      widget.onTapAddSkill(skill);
+                    },
                     child: const Text(AppText.add),
                   ),
                 ),

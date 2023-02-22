@@ -1,3 +1,4 @@
+import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
@@ -54,4 +55,16 @@ class RemovePlayerSpellEvent extends PlayerEvent {
   final Spell spell;
 
   RemovePlayerSpellEvent(this.spell);
+}
+
+class AddPlayerEquipmentEvent extends PlayerEvent {
+  final Equipment equipment;
+
+  AddPlayerEquipmentEvent(this.equipment);
+}
+
+class RemovePlayerEquipmentEvent extends PlayerEvent {
+  final Equipment equipment;
+
+  RemovePlayerEquipmentEvent(this.equipment);
 }

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
+import 'package:game_book_counter/src/modules/service_locator_setup.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
+import 'package:game_book_counter/src/presentation/commons/custom_dialogs.dart';
+import 'package:game_book_counter/src/presentation/items/bloc/item_state.dart';
+import 'package:game_book_counter/src/presentation/items/bloc/items_bloc.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_equipments_list_item.dart';
 import 'package:game_book_counter/src/utils/color_table.dart';
 
-class HomeCardEquipmentsList extends StatelessWidget {
+class HomeCardEquipmentsList extends StatefulWidget {
   final List<Equipment> equipments;
-  final VoidCallback onTapAddEquipment;
-  final VoidCallback onTapRemoveEquipment;
+  final Function(Equipment?) onTapAddEquipment;
+  final Function(Equipment) onTapRemoveEquipment;
 
   const HomeCardEquipmentsList({
     required this.equipments,
@@ -16,6 +20,26 @@ class HomeCardEquipmentsList extends StatelessWidget {
     required this.onTapRemoveEquipment,
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<HomeCardEquipmentsList> createState() => _HomeCardEquipmentsListState();
+}
+
+class _HomeCardEquipmentsListState extends State<HomeCardEquipmentsList> {
+  late ItemsBloc itemsBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    itemsBloc = getIt<ItemsBloc>();
+    itemsBloc.init();
+  }
+
+  @override
+  void dispose() {
+    itemsBloc.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +62,14 @@ class HomeCardEquipmentsList extends StatelessWidget {
           ListView.builder(
             primary: false,
             shrinkWrap: true,
-            itemCount: equipments.length,
+            itemCount: widget.equipments.length,
             itemBuilder: (context, index){
-              if (equipments.isEmpty) {
+              if (widget.equipments.isEmpty) {
                 return Container();
               }
               return HomeCardEquipmentsListItem(
-                equipment: equipments[index],
-                onRemoveItem: () => onTapRemoveEquipment(),
+                equipment: widget.equipments[index],
+                onRemoveItem: () => widget.onTapRemoveEquipment(widget.equipments[index]),
               );
             },
           ),
@@ -54,7 +78,17 @@ class HomeCardEquipmentsList extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: ElevatedButton(
-                onPressed: () => onTapAddEquipment(),
+                onPressed: () async {
+                  Equipment? equipment;
+                  if (itemsBloc.state is ItemsLoadedState) {
+                    if ((itemsBloc.state as ItemsLoadedState).items.isNotEmpty) {
+                      equipment = await CustomDialogs().showAddEquipmentToPlayerDialog(context);
+                    } else {
+                      CustomDialogs().showMessageDialog(context, AppText.item, AppText.emptyListMessage(AppText.equipment));
+                    }
+                  }
+                  widget.onTapAddEquipment(equipment);
+                },
                 child: const Text(AppText.equipItem),
               ),
             ),

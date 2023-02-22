@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_book_counter/src/domain/attributes/entity/attributes.dart';
+import 'package:game_book_counter/src/domain/equipment/entity/equipment.dart';
 import 'package:game_book_counter/src/domain/skill/entity/skill.dart';
 import 'package:game_book_counter/src/domain/spell/entity/spell.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/modules/service_locator_setup.dart';
+import 'package:game_book_counter/src/presentation/commons/forms/add_item_form.dart';
 import 'package:game_book_counter/src/presentation/commons/forms/add_skill_form.dart';
 import 'package:game_book_counter/src/presentation/commons/forms/add_spell_form.dart';
 import 'package:game_book_counter/src/presentation/commons/forms/attributes_form.dart';
 import 'package:game_book_counter/src/presentation/commons/forms/create_skill_form.dart';
 import 'package:game_book_counter/src/presentation/commons/forms/create_spell_form.dart';
 import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
+import 'package:game_book_counter/src/presentation/items/bloc/item_state.dart';
+import 'package:game_book_counter/src/presentation/items/bloc/items_bloc.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_state.dart';
 import 'package:game_book_counter/src/presentation/skills/bloc/skills_bloc.dart';
 import 'package:game_book_counter/src/presentation/spells/bloc/spells_bloc.dart';
@@ -136,6 +140,35 @@ class CustomDialogs {
                   ),
                   content: AddSpellForm(
                     spells: state.spells,
+                    onConfirm: (data) => Navigator.of(context).pop(data),
+                    onClose: () => Navigator.of(context).pop(null),
+                  ),
+                );
+              }
+              return const LoadingIndicator();
+            },
+          );
+        },
+      );
+
+  Future<Equipment?> showAddEquipmentToPlayerDialog(BuildContext context) async =>
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          final bloc = getIt<ItemsBloc>();
+          bloc.init();
+          return BlocBuilder(
+            bloc: bloc,
+            builder: (context, state) {
+              if (state is ItemsLoadedState) {
+                return AlertDialog(
+                  title: const Text(AppText.addItem),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(ParamsConst.defaultBorderRadius),
+                  ),
+                  content: AddItemForm(
+                    items: state.items.whereType<Equipment>().toList(),
                     onConfirm: (data) => Navigator.of(context).pop(data),
                     onClose: () => Navigator.of(context).pop(null),
                   ),
