@@ -8,7 +8,6 @@ import 'package:game_book_counter/src/presentation/commons/bottom_nav_bar.dart';
 import 'package:game_book_counter/src/presentation/commons/custom_dialogs.dart';
 import 'package:game_book_counter/src/presentation/commons/error_indicator_card.dart';
 import 'package:game_book_counter/src/presentation/commons/loading_indicator.dart';
-import 'package:game_book_counter/src/presentation/items/bloc/items_bloc.dart';
 import 'package:game_book_counter/src/presentation/main/components/homa_card_spells_list.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_equipments_list.dart';
 import 'package:game_book_counter/src/presentation/main/components/home_card_inventory.dart';
@@ -114,8 +113,10 @@ class _HomePageState extends State<HomePage> {
                       onTapRemoveEquipment: (equipment) => playerBloc.add(RemovePlayerEquipmentEvent(equipment)),
                     ),
 
-                    HomeCardInventory(inventory: state.player!.inventory),
-
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).pushNamed(PageConst.inventory, arguments: state.player!.id),
+                      child: HomeCardInventory(inventory: state.player!.inventory),
+                    ),
                     const SizedBox(height: 10,),
                   ],
                 );

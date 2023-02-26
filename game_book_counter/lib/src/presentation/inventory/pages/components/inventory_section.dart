@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:game_book_counter/src/domain/item/entity/item.dart';
-import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/commons/card_default.dart';
 import 'package:game_book_counter/src/presentation/inventory/pages/components/inventory_section_item.dart';
 
@@ -20,21 +19,22 @@ class InventorySection extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
               child: Text(
-                AppText.items,
+                title,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: items.length,
-                (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
-                    child: InventorySectionItem(item: items[index]),
-                  );
-                },
+            if (items.isNotEmpty)
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: items.length,
+                  (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+                      child: InventorySectionItem(item: items[index]),
+                    );
+                  },
+                ),
               ),
-            ),
           ],
         ),
       ),

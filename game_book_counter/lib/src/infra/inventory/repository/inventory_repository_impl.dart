@@ -8,8 +8,8 @@ class InventoryRepositoryImpl extends InventoryRepository {
   InventoryRepositoryImpl(this.datasource);
 
   @override
-  Future<Inventory> getInventory(String playerId) async {
+  Stream<Inventory> getInventory(String playerId) async* {
     final result = await datasource.getInventory(playerId);
-    return result.toEntity();
+    yield result.toEntity();
   }
 }

@@ -64,7 +64,7 @@ class _HomeCardInventoryState extends State<HomeCardInventory> {
               Padding(
                 padding: const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 4),
                 child: Text(
-                  '${widget.inventory.money}\$',
+                  '\$${widget.inventory.money}',
                   style: fontStyle,
                 ),
               ),
@@ -73,16 +73,16 @@ class _HomeCardInventoryState extends State<HomeCardInventory> {
           HomeCardInventorySection(items: widget.inventory.equipments),
           HomeCardInventorySection(items: widget.inventory.consumables),
           HomeCardInventorySection(items: widget.inventory.items),
-          FractionallySizedBox(
-            widthFactor: 1,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text(AppText.createItem),
-              ),
-            ),
-          ),
+          // FractionallySizedBox(
+          //   widthFactor: 1,
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(16),
+          //     child: ElevatedButton(
+          //       onPressed: () {},
+          //       child: const Text(AppText.createItem),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

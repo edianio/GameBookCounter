@@ -6,5 +6,5 @@ class GetInventory {
 
   GetInventory(this.repository);
 
-  Future<Inventory> call(String playerId) => repository.getInventory(playerId);
+  Stream<Inventory> call(String playerId) => repository.getInventory(playerId);
 }

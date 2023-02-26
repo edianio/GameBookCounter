@@ -11,11 +11,17 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState>{
     on<GetInventoryEvent>(_get, transformer: sequential());
   }
 
+  void init(String playerId) {
+    add(GetInventoryEvent(playerId));
+  }
+
   Future<void> _get(GetInventoryEvent event, Emitter emit) async {
-    await getInventory(event.playerId).then((data) {
-      emit(InventoryLoadedState(data));
-    }).catchError((e,s){
-      emit(InventoryExceptionState(e.toString()));
-    });
+    await emit.onEach(
+      getInventory.call(event.playerId),
+      onData: (data) => emit(InventoryLoadedState(data)),
+      onError: (e,s) {
+        emit(InventoryExceptionState(e.toString()));
+      },
+    );
   }
 }

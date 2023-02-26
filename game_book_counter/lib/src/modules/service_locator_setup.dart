@@ -1,3 +1,4 @@
+import 'package:game_book_counter/src/modules/service_locator_inventory.dart';
 import 'package:game_book_counter/src/modules/service_locator_items.dart';
 import 'package:game_book_counter/src/modules/service_locator_pages.dart';
 import 'package:game_book_counter/src/modules/service_locator_player.dart';
@@ -13,4 +14,5 @@ void serviceLocatorSetup() {
   serviceLocatorSkills();
   serviceLocatorItems();
   serviceLocatorSpells();
+  serviceLocatorInventory();
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_book_counter/src/domain/inventory/entity/inventory.dart';
 import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/inventory/pages/inventory_page.dart';
@@ -41,7 +42,7 @@ class AppGeneratedRoute {
         );
       case PageConst.inventory:
         return MaterialPageRoute(
-          builder: (_) => const InventoryPage(),
+          builder: (_) => InventoryPage(playerId: settings.arguments as String),
           settings: settings,
         );
       case PageConst.items:

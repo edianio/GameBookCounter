@@ -104,6 +104,7 @@ class AppText {
   static const itemConsume = 'Item necessário';
   static const inventory = 'Inventário';
   static const coins = 'Moedas';
+  static const consumable = 'Consumível';
   static const item = 'Item';
   static const items = 'Itens';
   static const addItem = 'Adicionar item';
