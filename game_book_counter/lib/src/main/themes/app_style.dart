@@ -9,7 +9,7 @@ part 'my_bottom_navigation_bar_theme.dart';
 part 'my_input_decoration_theme.dart';
 
 ThemeData appStyle() => ThemeData(
-  fontFamily: 'Roboto',
+  fontFamily: 'Quicksand',
   textTheme: myTextTheme(),
   primaryColor: ColorTable.primary,
   scaffoldBackgroundColor: ColorTable.scaffoldBackground,

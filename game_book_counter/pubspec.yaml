@@ -110,11 +110,9 @@ flutter:
     - assets/lottie/
 
   fonts:
-    - family: Roboto
+    - family: Quicksand
       fonts:
-        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+        - asset: assets/fonts/quicksand/Quicksand-Regular.ttf
           style: normal
-        - asset: assets/fonts/roboto/Roboto-Italic.ttf
-          style: italic
-        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+        - asset: assets/fonts/quicksand/Quicksand-Bold.ttf
           weight: 700
