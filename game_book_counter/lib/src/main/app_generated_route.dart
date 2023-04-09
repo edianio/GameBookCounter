@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:game_book_counter/src/domain/inventory/entity/inventory.dart';
 import 'package:game_book_counter/src/domain/player/entity/player_character.dart';
 import 'package:game_book_counter/src/main/app_const.dart';
 import 'package:game_book_counter/src/presentation/inventory/pages/inventory_page.dart';
